@@ -1,18 +1,9 @@
-<h1>Show Task</h1>
+<h1 class="title"><%= @task.title %></h1>
+<p class="box">
+  <%= @task.content %>
+</p>
 
-<ul>
-
-  <li>
-    <strong>Title:</strong>
-    <%= @task.title %>
-  </li>
-
-  <li>
-    <strong>Content:</strong>
-    <%= @task.content %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span>
-<span><%= link "Back", to: Routes.task_path(@conn, :index) %></span>
+<p>
+  <span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task), class: "button is-warning" %></span>
+  <span><%= link "Back", to: Routes.task_path(@conn, :index), class: "button is-link" %></span>
+</p>

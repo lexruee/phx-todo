@@ -1,28 +1,20 @@
-<h1 class="title">Listing Tasks</h1>
+<h1 class="title">Tasks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-
-      <th></th>
-    </tr>
-  </thead>
+<table class="table is-striped is-fullwidth">
   <tbody>
 <%= for task <- @tasks do %>
     <tr>
-      <td><%= task.title %></td>
-      <td><%= task.content %></td>
-
+      <td><%= link task.title, to: Routes.task_path(@conn, :show, task) %></td>
       <td>
-        <%= link "Show", to: Routes.task_path(@conn, :show, task) %>
-        <%= link "Edit", to: Routes.task_path(@conn, :edit, task) %>
-        <%= link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"] %>
+        <div class="is-pulled-right">
+          <%= link "Show", to: Routes.task_path(@conn, :show, task), class: "button is-link" %>
+          <%= link "Edit", to: Routes.task_path(@conn, :edit, task), class: "button is-warning" %>
+          <%= link "Delete", to: Routes.task_path(@conn, :delete, task), class: "button is-danger", method: :delete, data: [confirm: "Are you sure?"] %>
+        </div>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Task", to: Routes.task_path(@conn, :new) %></span>
+<span><%= link "New Task", to: Routes.task_path(@conn, :new), class: "button is-success" %></span>
